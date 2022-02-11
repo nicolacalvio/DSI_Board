@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import DescriptionCard from './DescriptionCard';
 
 
 class Card extends Component<any, any> {
@@ -9,8 +10,14 @@ class Card extends Component<any, any> {
             this.props.removeFocus(this.props.id)
         }
     }
+
+
     render(){
         let titolo;
+        let openDesc = () => {
+            console.log("ciao bello")
+            return <DescriptionCard key={1}/>
+        }
         if (this.props.focus) {
             titolo = (
                 <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
@@ -26,7 +33,7 @@ class Card extends Component<any, any> {
         return (
             <>
             
-                <div className='w-h-full h-16 mx-4 my-4 bg-zinc-100 rounded-lg' onClick={()=> this.props.openDesc}>
+                <div className='w-h-full h-16 mx-4 my-4 bg-zinc-100 rounded-lg' onClick={()=> openDesc()}>
                     {titolo}
                 </div>
 

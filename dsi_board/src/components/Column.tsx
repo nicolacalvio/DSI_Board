@@ -41,7 +41,7 @@ class Column extends Component<any, any> {
                             <div className="border-4 border-dashed h-auto">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
                                 {this.state.cards.map(card=>
-                                    <Card key={card.id} id={card.id} focus={card.focus} removeFocus={this.removeFocus} cardTitle={card.cardTitle} modifyTitle={this.modifyTitle} openDesc={()=>{console.log("ciao")}}/>)
+                                    <Card key={card.id} id={card.id} focus={card.focus} removeFocus={this.removeFocus} cardTitle={card.cardTitle} modifyTitle={this.modifyTitle}/>)
                                 }
                                 <div className="flex justify-center">
                                     <button className="relative bottom-0 text-white" onClick={()=>this.addCard()}>Add</button>

@@ -13,14 +13,6 @@ class Header extends Component<any, any> {
                         <a href="/home"
                            className="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
                     </div>
-                    <div>
-                        <a href="/one"
-                           className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">One</a>
-                        <a href="/two"
-                           className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Two</a>
-                        <a href="/three"
-                           className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Three</a>
-                    </div>
                 </nav>
             </>
         );
