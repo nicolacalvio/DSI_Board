@@ -14,7 +14,7 @@ class Column extends Component<any, any> {
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm">{this.props.title}</div>
 
                            </div>
-                            <div className="relative flex bottom-6 justify-center text-white" onClick={()=>this.props.addCard(this.props.idCard)}>Add</div>
+                            <button className="relative flex bottom-6 justify-center text-white" onClick={()=>this.props.addCard(this.props.idCard)}>Add</button>
                         </div>
                     </div>
                 </main>

@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import Header from "./components/Header";
 import Column from "./components/Column";
 import './App.css';
+import Card from './components/Card';
 
 
 class App extends Component<any, any> {
 state = {}
 
-addCard:any = (idCard:number) =>{
-
-}
+    addCard:any = (idCard:number) =>{
+        return (
+            <>
+                <Card/>
+            </>
+        )
+    }
 
   render(){
       return (
