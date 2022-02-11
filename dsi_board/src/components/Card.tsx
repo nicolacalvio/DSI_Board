@@ -7,7 +7,7 @@ class Card extends Component<any, any> {
         let titolo;
         if (this.props.focus) {
             titolo = (
-                <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text">Insert the name of the card</input>
+                <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card"/>
             );
             document.querySelectorAll("input").forEach((el)=>{
                 el.focus();
