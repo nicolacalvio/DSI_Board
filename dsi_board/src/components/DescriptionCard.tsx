@@ -11,13 +11,20 @@ class DescriptionCard extends Component<any, any> {
     }
     changeTitle = () =>{
         const titolo = (
-            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
+            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" value={this.props.cardTitle} onKeyDown={this._handleKeyDown}/>
+        )
+        this.setState({titolo})
+    }
+    changeTitleToDiv = (title:string) =>{
+        const titolo = (
+            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{title}</div>
         )
         this.setState({titolo})
     }
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
-            this.props.setNewTitle(e.target.value)
+            this.props.setNewTitle(e.target.value);
+            this.changeTitleToDiv(e.target.value);
         }
     }
 
