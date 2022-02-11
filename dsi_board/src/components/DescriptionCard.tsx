@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import x from '../images/677910.png'
 
+interface State {
+    titolo:JSX.Element
+}
 
 class DescriptionCard extends Component<any, any> {
-    state = {}
-
+    state = {
+        titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.props.cardTitle}</div>
+    }
+    changeTitle = () =>{
+        const titolo = (
+            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
+        )
+        this.setState({titolo})
+    }
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
             this.props.setNewTitle(e.target.value)
@@ -12,20 +22,6 @@ class DescriptionCard extends Component<any, any> {
     }
 
     render(){
-        let titolo;
-
-        const changeTitle = () =>{
-            titolo = (
-                <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
-            );
-            document.querySelectorAll("input").forEach((el)=>{
-                el.focus();
-            })
-        }
-
-        titolo = (
-            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-lg text-neutral-900' onClick={() => changeTitle()}>{this.props.cardTitle}</div>
-        );
         return (
             <>
                 <div className="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -36,7 +32,7 @@ class DescriptionCard extends Component<any, any> {
                             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <img src={x} className='w-6 h-6 absolute top-4 right-4' onClick={()=>this.props.close}/>
                                 <div className="sm:flex sm:items-start">
-                                    {titolo}
+                                    {this.state.titolo}
                                 </div>
                             </div>
                         </div>
