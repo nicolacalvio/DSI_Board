@@ -3,7 +3,7 @@ import Card from './Card';
 
 
 interface State {
-    cards: { id:number, description:string }[];
+    cards: { id:number, cardTitle:string }[];
 }
 
 class Column extends Component<any, any> {
@@ -12,14 +12,15 @@ class Column extends Component<any, any> {
         cards: []
     }
 
-    addCard = (idCard:any) => {
+    addCard = () => {
         const cards = [...this.state.cards];
+        const cardTitle:string = "";
+        const length = cards.length;
         cards.push(
-            {id:idCard,description:"ciao"}
+            {id:length, cardTitle:cardTitle}
         )
         this.setState({cards})
     }
-    contatore =0;
 
     render(){
         return (
@@ -27,18 +28,15 @@ class Column extends Component<any, any> {
                 <main>
                     <div className="min-h-md max-w-xs ml-12">
                         <div className="px-4 py-6 sm:px-0">
-                            <div className="border-4 border-dashed  h-32">
+                            <div className="border-4 border-dashed h-auto">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
-                                {this.state.cards.map(card=>(
-                                    <Card key={card.id} cardTitle="Ciao" openDesc={()=>{console.log("ciao")}}/>
-                                ))}
+                                {this.state.cards.map(card=>
+                                    ((card == this.state.cards[this.state.cards.length-1]) ? <Card key={card.id} focus={true} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/> : <Card key={card.id} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/>)
+                                )}
+                                <div className="flex justify-center">
+                                    <button className="relative bottom-0 text-white" onClick={()=>this.addCard()}>Add</button>
+                                </div>
                            </div>
-
-
-                            <div className="flex justify-center">
-                                <button className="relative bottom-6 text-white" onClick={()=>this.addCard(this.contatore++)}>Add</button>
-                            </div>
-
                         </div>
                     </div>
                 </main>
