@@ -6,12 +6,13 @@ interface State {
 }
 
 class DescriptionCard extends Component<any, any> {
+    title = this.props.cardTitle;
     state = {
-        titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.props.cardTitle}</div>
+        titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.title}</div>
     }
     changeTitle = () =>{
         const titolo = (
-            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" value={this.props.cardTitle} onKeyDown={this._handleKeyDown}/>
+            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder={this.title} onKeyDown={this._handleKeyDown}/>
         )
         this.setState({titolo})
     }
@@ -24,7 +25,9 @@ class DescriptionCard extends Component<any, any> {
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
             this.props.setNewTitle(e.target.value);
+            this.title = e.target.value
             this.changeTitleToDiv(e.target.value);
+
         }
     }
 
