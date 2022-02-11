@@ -14,7 +14,7 @@ class DescriptionCard extends Component<any, any> {
     render(){
         let titolo;
 
-        function changeTitle (){
+        const changeTitle = () =>{
             titolo = (
                 <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
             );

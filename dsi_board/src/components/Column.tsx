@@ -15,7 +15,7 @@ class Column extends Component<any, any> {
     addCard = () => {
         const cards = [...this.state.cards];
         const cardTitle:string = "";
-        const length = cards.length;
+        const length:number = cards.length;
         cards.push(
             {id:length, cardTitle:cardTitle, focus:true}
         )
