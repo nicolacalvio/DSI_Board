@@ -54,7 +54,7 @@ class Card extends Component<any, any> {
         }
         let description
         if(this.state.description){
-           description =( <DescriptionCard key={this.state.description?.id} cardtitle={this.state.description?.title} desc={this.state.description?.desc}/> )
+           description =( <DescriptionCard key={this.state.description?.id} cardTitle={this.state.description?.title} desc={this.state.description?.desc}/> )
         }
         return (
             <>
