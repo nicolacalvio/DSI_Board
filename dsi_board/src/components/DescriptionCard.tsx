@@ -13,18 +13,19 @@ class DescriptionCard extends Component<any, any> {
 
     render(){
         let titolo;
-        if (this.props.focus) {
+
+        function changeTitle (){
             titolo = (
                 <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
             );
             document.querySelectorAll("input").forEach((el)=>{
                 el.focus();
             })
-        } else {
-            titolo = (
-                <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{this.props.cardTitle}</div>
-            );
         }
+
+        titolo = (
+            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => changeTitle()}>{this.props.cardTitle}</div>
+        );
         return (
             <>
                {/*<div className='h-full w-1/2 flex justify-center'>

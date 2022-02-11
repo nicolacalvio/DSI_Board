@@ -18,11 +18,14 @@ class Card extends Component<any, any> {
     }
 
     setNewTitle = (title: string) => {
-        let description = this.state.description;
-        if(description){
-            description?.title=title;
+        if(this.state.description){
+            const description = {
+                id:this.state.description.id,
+                title:this.state.description.title,
+                desc:this.state.description.desc,
+            }
+            this.setState({description})
         }
-        this.setState({description})
     }
 
     state: Readonly<State> = {
