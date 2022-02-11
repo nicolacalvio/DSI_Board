@@ -1,8 +1,20 @@
 import React, {Component} from 'react';
+import Card from './Card';
+
+
 
 
 class Column extends Component<any, any> {
-    state = {}
+    state = {
+        cards: []
+    }
+    addCard = (idCard:any) => {
+        const cards:any = [...this.state.cards];
+        cards.push(
+            {id:idCard,descrizione:"ciao"}
+        )
+        this.setState({cards})
+    }
 
     render(){
         return (
@@ -12,9 +24,14 @@ class Column extends Component<any, any> {
                         <div className="px-4 py-6 sm:px-0">
                             <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm">{this.props.title}</div>
-
                            </div>
-                            <button className="relative flex bottom-6 justify-center text-white" onClick={()=>this.props.addCard(this.props.idCard)}>Add</button>
+                            <div className="flex justify-center">
+                                {this.state.cards.map(card=>(
+                                    <Card key={1} cardTitle="Ciao" openDesc="auuu"/>
+                                ))}
+                                <button className="relative bottom-6 text-white" onClick={()=>this.addCard}>Add</button>
+                            </div>
+
                         </div>
                     </div>
                 </main>
