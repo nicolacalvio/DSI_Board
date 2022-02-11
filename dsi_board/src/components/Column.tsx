@@ -3,7 +3,7 @@ import Card from './Card';
 
 
 interface State {
-    cards: { id:number, cardTitle:string }[];
+    cards: { id:number, cardTitle:string, focus:boolean }[];
 }
 
 class Column extends Component<any, any> {
@@ -17,8 +17,18 @@ class Column extends Component<any, any> {
         const cardTitle:string = "";
         const length = cards.length;
         cards.push(
-            {id:length, cardTitle:cardTitle}
+            {id:length, cardTitle:cardTitle, focus:true}
         )
+        this.setState({cards})
+    }
+    modifyTitle = (idTitle:number, title:string) =>{
+        const cards = [...this.state.cards];
+        cards[idTitle].cardTitle = title
+        this.setState({cards})
+    }
+    removeFocus =(key:number) =>{
+        const cards = [...this.state.cards];
+        cards[key].focus = false
         this.setState({cards})
     }
 
@@ -31,8 +41,8 @@ class Column extends Component<any, any> {
                             <div className="border-4 border-dashed h-auto">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
                                 {this.state.cards.map(card=>
-                                    ((card == this.state.cards[this.state.cards.length-1]) ? <Card key={card.id} focus={true} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/> : <Card key={card.id} focus={false} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/>)
-                                )}
+                                    <Card key={card.id} id={card.id} focus={card.focus} removeFocus={this.removeFocus} cardTitle={card.cardTitle} modifyTitle={this.modifyTitle} openDesc={()=>{console.log("ciao")}}/>)
+                                }
                                 <div className="flex justify-center">
                                     <button className="relative bottom-0 text-white" onClick={()=>this.addCard()}>Add</button>
                                 </div>
