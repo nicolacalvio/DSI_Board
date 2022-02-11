@@ -17,6 +17,14 @@ class Card extends Component<any, any> {
         }
     }
 
+    setNewTitle = (title: string) => {
+        let description = this.state.description;
+        if(description){
+            description?.title=title;
+        }
+        this.setState({description})
+    }
+
     state: Readonly<State> = {
         description: undefined
     }
