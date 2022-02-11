@@ -4,11 +4,15 @@ import DescriptionCard from './DescriptionCard';
 interface State {
     description? : { id:number, title:string, desc:string } | undefined;
     title:string;
+    desc:string;
 }
 
 class Card extends Component<any, any> {
     updateTitle =(title:string)=>{
         this.setState({title});
+    }
+    updateDesc =(desc:string)=>{
+        this.setState({desc});
     }
 
     _handleKeyDown = (e:any) => {
@@ -31,13 +35,13 @@ class Card extends Component<any, any> {
         }
     }
 
-    setNewDesc = (desc: string) => {
+    setNewDesc = (descri: string) => {
         if(this.state.description){
-            this.updateTitle(desc);
+            this.updateDesc(descri);
             const description = {
                 id:this.state.description.id,
                 title:this.state.description.title,
-                desc:desc,
+                desc:descri
             }
             this.setState({description})
         }
@@ -45,12 +49,14 @@ class Card extends Component<any, any> {
 
     state: Readonly<State> = {
         description: undefined,
-        title: this.props.cardTitle
+        title: this.props.cardTitle,
+        desc: ""
     }
 
     openDesc = () => {
         let description = this.state.description;
-        description = {id:1, title:this.state.title, desc:""}
+        console.log(this.state.description?.desc)
+        description = {id:1, title:this.state.title, desc:this.state.desc}
         this.setState({description})
     }
     closeDesc = () =>{

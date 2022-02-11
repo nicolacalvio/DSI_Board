@@ -37,7 +37,7 @@ class Column extends Component<any, any> {
             <>
                 <main>
                     <div className="min-h-md max-w-xs ml-12">
-                        <div className="px-4 py-6 sm:px-0">
+                        <div className=" py-6 sm:px-0">
                             <div className="border-4 border-dashed h-auto">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
                                 {this.state.cards.map(card=>
