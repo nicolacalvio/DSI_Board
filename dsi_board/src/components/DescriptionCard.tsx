@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
+import { threadId } from 'worker_threads';
 import x from '../images/677910.png'
 
 interface State {
     titolo:JSX.Element
+    desc: JSX.Element
 }
 
 class DescriptionCard extends Component<any, any> {
     title = this.props.cardTitle;
+    desc = this.props.desc;
     state = {
-        titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.title}</div>
+        titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.title}</div>,
+        desc: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{this.desc}</div>
     }
     changeTitle = () =>{
         const titolo = (
@@ -22,11 +26,31 @@ class DescriptionCard extends Component<any, any> {
         )
         this.setState({titolo})
     }
+    changeDesc = () =>{
+        const desc = (
+            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder={this.desc} onKeyDown={this._handleKeyDown2}/>
+        )
+        this.setState({desc})
+    }
+    changeDescToDiv = (descrizione:string) =>{
+        const desc = (
+            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{descrizione}</div>
+        )
+        this.setState({desc})
+    }
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
             this.props.setNewTitle(e.target.value);
             this.title = e.target.value
             this.changeTitleToDiv(e.target.value);
+
+        }
+    }
+    _handleKeyDown2 = (e:any) => {
+        if (e.key === 'Enter') {
+            this.props.setNewDesc(e.target.value);
+            this.desc = e.target.value
+            this.changeDescToDiv(e.target.value);
 
         }
     }
@@ -50,6 +74,9 @@ class DescriptionCard extends Component<any, any> {
                                 <img src={x} className='w-6 h-6 absolute top-4 right-4' onClick={()=>this.close()}/>
                                 <div className="sm:flex sm:items-start">
                                     {this.state.titolo}
+                                </div>
+                                <div className="sm:flex sm:items-start">
+                                    {this.state.desc}
                                 </div>
                             </div>
                         </div>

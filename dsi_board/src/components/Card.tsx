@@ -31,6 +31,18 @@ class Card extends Component<any, any> {
         }
     }
 
+    setNewDesc = (desc: string) => {
+        if(this.state.description){
+            this.updateTitle(desc);
+            const description = {
+                id:this.state.description.id,
+                title:this.state.description.title,
+                desc:desc,
+            }
+            this.setState({description})
+        }
+    }
+
     state: Readonly<State> = {
         description: undefined,
         title: this.props.cardTitle
@@ -62,7 +74,7 @@ class Card extends Component<any, any> {
         }
         let description
         if(this.state.description){
-           description =( <DescriptionCard key={this.state.description?.id} cardTitle={this.state.description?.title} desc={this.state.description?.desc} setNewTitle={this.setNewTitle} closeDesc={this.closeDesc}/> )
+           description =( <DescriptionCard key={this.state.description?.id} cardTitle={this.state.description?.title} desc={this.state.description?.desc} setNewTitle={this.setNewTitle} setNewDesc={this.setNewDesc} closeDesc={this.closeDesc}/> )
         }
         return (
             <>
