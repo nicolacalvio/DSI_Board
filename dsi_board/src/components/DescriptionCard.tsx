@@ -35,7 +35,7 @@ class DescriptionCard extends Component<any, any> {
         if(document.getElementById("popup") != null){
             (document.getElementById("popup") as HTMLFormElement).style.display="none";
         }
-        
+        this.props.closeDesc();
     }
 
     render(){

@@ -3,25 +3,28 @@ import DescriptionCard from './DescriptionCard';
 
 interface State {
     description? : { id:number, title:string, desc:string } | undefined;
+    title:string;
 }
 
 class Card extends Component<any, any> {
-    
-    cardtitle: string = ""
+    updateTitle =(title:string)=>{
+        this.setState({title});
+    }
 
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
             this.props.modifyTitle(this.props.id, e.target.value)
-            this.cardtitle = e.target.value
+            this.updateTitle(e.target.value)
             this.props.removeFocus(this.props.id)
         }
     }
 
     setNewTitle = (title: string) => {
         if(this.state.description){
+            this.updateTitle(title);
             const description = {
                 id:this.state.description.id,
-                title:this.state.description.title,
+                title:title,
                 desc:this.state.description.desc,
             }
             this.setState({description})
@@ -29,13 +32,18 @@ class Card extends Component<any, any> {
     }
 
     state: Readonly<State> = {
-        description: undefined
+        description: undefined,
+        title: this.props.cardTitle
     }
 
     openDesc = () => {
         let description = this.state.description;
-        description = {id:1, title:this.cardtitle, desc:""}
+        description = {id:1, title:this.state.title, desc:""}
         this.setState({description})
+    }
+    closeDesc = () =>{
+        const description = undefined;
+        this.setState({description});
     }
 
     render(){
@@ -49,12 +57,12 @@ class Card extends Component<any, any> {
             })
         } else {
             titolo = (
-                <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{this.props.cardTitle}</div>
+                <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{this.state.title}</div>
             );
         }
         let description
         if(this.state.description){
-           description =( <DescriptionCard key={this.state.description?.id} cardTitle={this.state.description?.title} desc={this.state.description?.desc} setNewTitle={this.setNewTitle}/> )
+           description =( <DescriptionCard key={this.state.description?.id} cardTitle={this.state.description?.title} desc={this.state.description?.desc} setNewTitle={this.setNewTitle} closeDesc={this.closeDesc}/> )
         }
         return (
             <>
