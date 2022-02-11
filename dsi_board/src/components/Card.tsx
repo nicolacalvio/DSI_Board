@@ -8,7 +8,7 @@ class Card extends Component<any, any> {
         return (
             <>
                 <div className='w-h-full h-2 bg-cyan-200' onClick={()=> this.props.openDesc}>
-                    <div className='title'>{this.props.cardtitle}</div>
+                    <div className='top-0.5 left-0.5 right-0.5 overflow-hidden text-ellipsis text-xs text-neutral-900'>{this.props.cardtitle}</div>
                 </div>
             </>
         );
