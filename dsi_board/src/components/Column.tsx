@@ -31,7 +31,7 @@ class Column extends Component<any, any> {
                             <div className="border-4 border-dashed h-auto">
                                 <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
                                 {this.state.cards.map(card=>
-                                    ((card == this.state.cards[this.state.cards.length-1]) ? <Card key={card.id} focus={true} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/> : <Card key={card.id} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/>)
+                                    ((card == this.state.cards[this.state.cards.length-1]) ? <Card key={card.id} focus={true} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/> : <Card key={card.id} focus={false} cardTitle={card.cardTitle} openDesc={()=>{console.log("ciao")}}/>)
                                 )}
                                 <div className="flex justify-center">
                                     <button className="relative bottom-0 text-white" onClick={()=>this.addCard()}>Add</button>
