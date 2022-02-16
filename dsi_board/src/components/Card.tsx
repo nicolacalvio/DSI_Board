@@ -8,6 +8,7 @@ interface State {
 }
 
 class Card extends Component<any, any> {
+    //update title and description of cards
     updateTitle =(title:string)=>{
         this.setState({title});
     }

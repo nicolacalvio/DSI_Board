@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { threadId } from 'worker_threads';
 import x from '../images/677910.png'
+import Comments from "./Comments";
 
 interface State {
     titolo:JSX.Element
@@ -72,13 +73,16 @@ class DescriptionCard extends Component<any, any> {
                         <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
                             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <img src={x} className='w-6 h-6 absolute top-4 right-4' onClick={()=>this.close()}/>
+                                <p>Titolo</p>
                                 <div className="sm:flex sm:items-start">
                                     {this.state.titolo}
                                 </div>
+                                <p>Descrizione</p>
                                 <div className="sm:flex sm:items-start">
                                     {this.state.desc}
                                 </div>
                             </div>
+                            <Comments/>
                         </div>
                     </div>
                 </div>
