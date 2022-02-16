@@ -24,8 +24,11 @@ class Comments extends Component<any, any> {
         let input = (document.getElementById("message") as HTMLInputElement);
         let text : string = input.value;
         input.value = "";
-        comments.push({text:text, user:"me"});
-        this.setState({comments});
+        if(text!==""){
+            comments.push({text:text, user:"me"});
+            this.setState({comments});
+        }
+
     }
     _handleKeyDown = (e:any) => {
         if (e.key === 'Enter') {
