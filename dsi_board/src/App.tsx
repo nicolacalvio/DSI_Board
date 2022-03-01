@@ -13,13 +13,6 @@ class App extends Component<any, any> {
     column: []
   }
 
-  _handleKeyDown = (e:any, id:number) => {
-    if (e.key === 'Enter') {
-        this.props.modifyTitle(id, e.target.value)
-        this.props.removeFocus(id)
-    }
-  }
-
   addColumn = () => {
     const column = [...this.state.column];
     const columnTitle:string = "";
@@ -43,22 +36,6 @@ class App extends Component<any, any> {
   }
 
   render(){
-    let titolo=[];
-    this.state.column.forEach((elem, index)=>{
-      if (this.props.focus) {
-        titolo[index] = (
-            <input className='placeholder:italic mb-1 my-4 h-12 w-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown(event, index)}/>
-        );
-        document.querySelectorAll("input").forEach((el)=>{
-            el.focus();
-        })
-    } else {
-        titolo[index] = (
-            <div className='mx-2 my-4 h-20 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{elem.columnTitle}</div>
-        );
-    }
-    })  
-    
       return (
           <>
               <Header />

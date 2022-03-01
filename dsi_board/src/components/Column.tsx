@@ -11,7 +11,12 @@ class Column extends Component<any, any> {
     state: Readonly<State> = {
         cards: []
     }
-
+    _handleKeyDown = (e:any) => {
+        if (e.key === 'Enter') {
+            this.props.modifyTitle(this.props.id, e.target.value)
+            this.props.removeFocus(this.props.id)
+        }
+    }
 
 
     addCard = () => {
@@ -35,14 +40,27 @@ class Column extends Component<any, any> {
     }
 
     render(){
-        
+        let titolo;
+        if (this.props.focus) {
+            titolo = (
+                <input className='placeholder:italic mb-1 my-4 h-12 w-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
+            );
+            document.querySelectorAll("input").forEach((el)=>{
+                el.focus();
+            })
+        } else {
+            titolo = (
+                <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
+            );
+        }
         return (
             <>
                 <main>
                     <div className="min-h-md max-w-xs ml-12">
                         <div className=" py-6 sm:px-0">
                             <div className="border-4 border-dashed h-auto">
-                                <div className="flex justify-center text-black bg-gray-200 rounded-sm border-gray-200 rounded-lg">{this.props.title}</div>
+                                {titolo}
+
                                 {this.state.cards.map(card=>
                                     <Card key={card.id} id={card.id} focus={card.focus} removeFocus={this.removeFocus} cardTitle={card.cardTitle} modifyTitle={this.modifyTitle}/>)
                                 }
