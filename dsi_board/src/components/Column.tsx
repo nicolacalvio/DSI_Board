@@ -35,6 +35,7 @@ class Column extends Component<any, any> {
     }
 
     render(){
+        
         return (
             <>
                 <main>
