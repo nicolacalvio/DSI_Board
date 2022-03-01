@@ -82,7 +82,7 @@ class DescriptionCard extends Component<any, any> {
                                     {this.state.desc}
                                 </div>
                             </div>
-                            <Comments/>
+                            <Comments key={1}/>
                         </div>
                     </div>
                 </div>

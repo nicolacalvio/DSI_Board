@@ -12,6 +12,8 @@ class Column extends Component<any, any> {
         cards: []
     }
 
+
+
     addCard = () => {
         const cards = [...this.state.cards];
         const cardTitle:string = "";

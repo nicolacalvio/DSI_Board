@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import SingleComment from "./SingleComment";
 
 interface State {
-    comments:{text:string, user:string}[]
+    comments:{text:string, user:string, id:number}[]
 }
 
 class Comments extends Component<any, any> {
 
-
+    currentid:number = 1;
     state: Readonly<State> = {
         comments : [
-            {text: "Ciao", user:"Filippo"},
-            {text: "Hey", user:"me"}
+            {text: "Ciao", user:"Filippo", id:0},
+            {text: "Hey", user:"me", id:1}
         ], //sarà preso dal BE
     }
     OnInit(){
@@ -25,7 +25,7 @@ class Comments extends Component<any, any> {
         let text : string = input.value;
         input.value = "";
         if(text!==""){
-            comments.push({text:text, user:"me"});
+            comments.push({text:text, user:"me", id:this.currentid++});
             this.setState({comments});
         }
 
@@ -51,7 +51,7 @@ class Comments extends Component<any, any> {
 
                                 <ul className="space-y-2">
                                     {this.state.comments.map(comment=>
-                                        <SingleComment user={comment.user} text={comment.text}/>)
+                                        <SingleComment key={comment.id} user={comment.user} text={comment.text}/>)
                                     }
                                 </ul>
 
