@@ -69,14 +69,14 @@ class Card extends Component<any, any> {
         let titolo;
         if (this.props.focus) {
             titolo = (
-                <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
+                <input className='placeholder:italic mb-1 my-4 h-12 w-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
             );
             document.querySelectorAll("input").forEach((el)=>{
                 el.focus();
             })
         } else {
             titolo = (
-                <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{this.state.title}</div>
+                <div className='mx-2 my-4 h-20 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900'>{this.state.title}</div>
             );
         }
         let description
@@ -86,7 +86,7 @@ class Card extends Component<any, any> {
         return (
             <>
             
-                <div className='w-h-full h-16 mx-4 my-4 bg-zinc-100 rounded-lg' onClick={()=> (!this.props.focus) ? this.openDesc() : ()=> {}}>
+                <div className='w-h-full h-20 mx-4 my-4 bg-zinc-100 rounded-lg' onClick={()=> (!this.props.focus) ? this.openDesc() : ()=> {}}>
                     {titolo}
                 </div>
                 {description}

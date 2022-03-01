@@ -13,29 +13,29 @@ class DescriptionCard extends Component<any, any> {
     desc = this.props.desc;
     state = {
         titolo: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{this.title}</div>,
-        desc: <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{this.desc}</div>
+        desc: <div className='border mx-2 my-4 h-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{this.desc}</div>
     }
     changeTitle = () =>{
         const titolo = (
-            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder={this.title} onKeyDown={this._handleKeyDown}/>
+            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' placeholder={this.title} type="text" onKeyDown={this._handleKeyDown}/>
         )
         this.setState({titolo})
     }
     changeTitleToDiv = (title:string) =>{
         const titolo = (
-            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeTitle()}>{title}</div>
+            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900 resize-y' onClick={() => this.changeTitle()}>{title}</div>
         )
         this.setState({titolo})
     }
     changeDesc = () =>{
         const desc = (
-            <input className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder={this.desc} onKeyDown={this._handleKeyDown2}/>
+            <textarea className='border mx-2 my-4 h-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900 resize-y' placeholder={this.desc} onKeyDown={this._handleKeyDown2}></textarea>
         )
         this.setState({desc})
     }
     changeDescToDiv = (descrizione:string) =>{
         const desc = (
-            <div className='mx-2 my-4 h-12 p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{descrizione}</div>
+            <div className='border mx-2 my-4 h-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' onClick={() => this.changeDesc()}>{descrizione}</div>
         )
         this.setState({desc})
     }
