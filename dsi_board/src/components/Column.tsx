@@ -43,7 +43,7 @@ class Column extends Component<any, any> {
         let titolo;
         if (this.props.focus) {
             titolo = (
-                <input className='placeholder:italic mb-1 my-4 h-12 w-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the card" onKeyDown={this._handleKeyDown}/>
+                <input className='placeholder:italic mb-1 my-4 h-12 w-full p-4 align-middle flex-auto overflow-hidden text-ellipsis text-base text-neutral-900' type="text" placeholder="Insert the name of the column" onKeyDown={this._handleKeyDown}/>
             );
             document.querySelectorAll("input").forEach((el)=>{
                 el.focus();
